@@ -14,6 +14,8 @@ export default async function Home() {
   return (
     <div>
       <Header />
+
+      {/* Boas vindas */}
       <div className="px-5 pt-5">
         <h2 className="text-xl font-bold">Olá, Jhon Doe</h2>
         <p className="text-sm">
@@ -21,17 +23,28 @@ export default async function Home() {
         </p>
       </div>
 
+      {/* Barra de pesquisa */}
       <div className="px-5 mt-6">
         <Search />
       </div>
 
+      {/* Agendamentos */}
       <div className="px-5 mt-6 flex flex-col gap-3">
         <SectionTitle title="Agendamentos" />
         <BookingItem />
       </div>
 
+      {/* Recomendados */}
       <SectionTitle title="Recomendados" className="px-5 mt-6 mb-3" />
       <div className="flex px-5 gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+        {barbershops.map((barbershop: Barbershop) => (
+          <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+        ))}
+      </div>
+
+      {/* Populare */}
+      <SectionTitle title="Populares" className="px-5 mt-6 mb-3" />
+      <div className="flex px-5 gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden mb-[4.5rem]">
         {barbershops.map((barbershop: Barbershop) => (
           <BarbershopItem key={barbershop.id} barbershop={barbershop} />
         ))}
